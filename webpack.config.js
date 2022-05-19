@@ -20,7 +20,7 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -29,6 +29,18 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',
+      },
+      { 
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          { 
+          loader: 'file-loader',
+        // options: {
+        //   //name: '[path][name].[ext]',
+        //   outputPath: 'images',
+        // }, 
+          },
+        ],
       },
     ],
   },

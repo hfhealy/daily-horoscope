@@ -6,7 +6,9 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+// import aries from '../images/aries.png'
 //import aquarius from './images/aquarius.png'
+//var image = require(`./images/aquarius.png`)
 
 class App extends Component {
     constructor(props){
@@ -16,7 +18,8 @@ class App extends Component {
             mercury: '',
             sign: '',
             output: '',
-            retrograde: ''
+            retrograde: '',
+            image: ''
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -62,7 +65,7 @@ class App extends Component {
                 that.setState({mercury: boolean})
             })
 
-
+            this.setState({image: this.state.sign});
 
 
             
@@ -74,10 +77,14 @@ class App extends Component {
         
 
         <div>
+        <img src="https://horoscope-react.s3.us-west-1.amazonaws.com/Daily+(1).png" id="headerimg" />
         <div className='row justify-content-md-center'>
         <div className= "col-sm-5">
-        <label className="form-label" id="rec">Choose Your Zodiac Sign</label>
+        
+        {/* <h1 className='text-center'>Daily Horoscope</h1> */}
+        <p className="form-label text-center" id="rec">Choose Your Zodiac Sign...</p>
                 <select className="form-select" name="sign" onChange={this.handleChange} value={this.state.sign}>
+                    <option>Select Your Sign</option>
                     <option name="aquarius" value="aquarius">Aquarius</option>
                     <option name="pisces" value="pisces">Pisces</option>
                     <option name="aries" value="aries">Aries</option>
@@ -91,12 +98,27 @@ class App extends Component {
                     <option name="sagittarius" value="sagittarius">Sagittarius</option>
                     <option name="capricorn" value="capricorn">Capricorn</option>
                 </select>
-                <button className="btn btn-success w-100" type="button" name="button" onClick={this.handleClick}>Get Horoscope</button>
+                <button className="w-100" type="button" name="button" onClick={this.handleClick}>Get Horoscope</button>
                 </div>
                 </div>
-                {/* <img src={aquarius} alt="product" onClick={this.handleClick} /> */}
+                <div id="content">
+                {/* <img src={require('./images/aquarius.png')} onClick={this.handleClick} /> */}
+                {this.state.image == "" ? <span></span> : <img src={`https://horoscope-react.s3.us-west-1.amazonaws.com/${this.state.image}.jpeg`} onClick={this.handleClick} name="image" className='float-start'/>}
+                <h2 onClick={this.handleClick}>{this.state.image.toUpperCase()}</h2>
                 <div id="output" name="output" onClick={this.handleClick}>{this.state.output}</div>
-                <div id="mercury" name="mercury" onClick={this.handleClick}>{this.state.mercury == "" ? <span></span> : this.state.mercury == "true" ? <p>Mercury is in retrograde</p> : <p>Mercury is not in retrograde</p>}</div>
+                <div id="mercury" name="mercury" onClick={this.handleClick}>{this.state.mercury == "" ? <span></span> 
+                : this.state.mercury == "true" ? 
+                <div>
+                <h3>Is Mercury in Retrograde Today?</h3>
+                <p>Yes, mercury is in retrograde today! Don’t make any important moves when Mercury is retrograde. Nothing will be settled successfully for the future during these periods anyway – you will find it nearly impossible to nail down a plan. During a retrograde period, it is hard to get decisions from others. Even if a decision is made, it will be subject to change, either just after Mercury turns to direct motion or much later.</p>
+                </div>
+                : <div>
+                <h3>Is Mercury in Retrograde Today?</h3>
+                <p>No, mercury is not in retrograde today! Resume life as normal.</p>
+                </div>
+                }
+                </div>
+                </div>
         </div>
         );
     }
