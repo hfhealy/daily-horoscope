@@ -6,9 +6,6 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-// import aries from '../images/aries.png'
-//import aquarius from './images/aquarius.png'
-//var image = require(`./images/aquarius.png`)
 
 class App extends Component {
     constructor(props){
