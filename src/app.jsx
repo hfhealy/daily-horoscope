@@ -16,7 +16,10 @@ class App extends Component {
             sign: '',
             output: '',
             retrograde: '',
-            image: ''
+            image: '', 
+            year: '',
+            month: '',
+            day: ''
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -53,7 +56,7 @@ class App extends Component {
         var yyyy = today.getFullYear();
         today = yyyy + '-' + mm + '-' + dd;
         console.log("today", today);
-
+        this.setState({year: yyyy, month: mm, day:dd})
         axios
             
             .get(`https://mercuryretrogradeapi.com?date=${today}`)
@@ -104,6 +107,7 @@ class App extends Component {
                 {/* <img src={require('./images/aquarius.png')} onClick={this.handleClick} /> */}
                 {this.state.image == "" ? <span></span> : <img src={`https://horoscope-react.s3.us-west-1.amazonaws.com/${this.state.image}.jpeg`} onClick={this.handleClick} name="image" className='float-start'/>}
                 <h2 onClick={this.handleClick}>{this.state.image.toUpperCase()}</h2>
+                {this.state.image == "" ? <span></span> : <div id="date" onClick={this.handleClick}>{`${this.state.month}-${this.state.day}-${this.state.year}`}</div>}
                 <div id="output" name="output" onClick={this.handleClick}>{this.state.output}</div>
                 <div id="mercury" name="mercury" onClick={this.handleClick}>{this.state.mercury == "" ? <span></span> 
                 : this.state.mercury == "true" ? 
