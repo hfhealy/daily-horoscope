@@ -6,15 +6,11 @@ const app = express();
 app.use(express.static('dist'));
 app.use(express.static('public'));
 
-app.get('/api', (req, res) => {
-    axios.get(`https://aztro.sameerkumar.website/?sign=aries&day=today`)
-        .then((result) => {
-            res.send(result.data);
-        })
-        .catch((error) => {
-            console.error(error);
-            res.send('An error occured.');
-        })
+app.get('/api/:sign', (req, res) => {
+    axios
+    .get(`https://ohmanda.com/api/horoscope/${req.params.sign}`)
+
+    .then(zodiac => res.send(zodiac.data.horoscope))
 });
 
 module.exports = app;

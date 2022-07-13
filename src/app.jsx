@@ -37,11 +37,13 @@ class App extends Component {
         var that = this;
         axios
             
-            .get(`https://ohmanda.com/api/horoscope/${this.state.sign}/`)
-            
+            .get(`/api/${this.state.sign}`) 
+        
+
             .then(response => response.data)
 
-            .then(json => that.setState({output: json.horoscope}));
+            
+            .then(json => that.setState({output: json}));
 
         // JSON.parse(JSON.stringify(this.state.json));
         // this.setState({output: this.state.json.horoscope})
