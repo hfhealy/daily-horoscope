@@ -79,9 +79,9 @@ class App extends Component {
         
 
         <div>
-        <img src="https://horoscope-react.s3.us-west-1.amazonaws.com/Daily+(1).png" id="headerimg" />
-        <div className='row justify-content-md-center'>
-        <div className= "col-sm-5">
+        <img src="https://horoscope-react.s3.us-west-1.amazonaws.com/Daily+(1).png" id="headerimg" className="img-fluid w-75"/>
+        <div className="row mx-auto d-block w-75">
+        <div className= "col">
         
         {/* <h1 className='text-center'>Daily Horoscope</h1> */}
         <p className="form-label text-center" id="rec">Choose Your Zodiac Sign...</p>
@@ -104,20 +104,27 @@ class App extends Component {
                 </div>
                 </div>
                 <div id="content">
+                <div className="row row-cols-1 g-2 g-lg-3">
                 {/* <img src={require('./images/aquarius.png')} onClick={this.handleClick} /> */}
-                {this.state.image == "" ? <span></span> : <img src={`https://horoscope-react.s3.us-west-1.amazonaws.com/${this.state.image}.jpeg`} onClick={this.handleClick} name="image" className='float-start'/>}
-                <h2 onClick={this.handleClick}>{this.state.image.toUpperCase()}</h2>
-                {this.state.image == "" ? <span></span> : <div id="date" onClick={this.handleClick}>{`${this.state.month}-${this.state.day}-${this.state.year}`}</div>}
-                <div id="output" name="output" onClick={this.handleClick}>{this.state.output}</div>
+                <div className="col" id="image-col">
+                {this.state.image == "" ? <span></span> : <img src={`https://horoscope-react.s3.us-west-1.amazonaws.com/${this.state.image}.jpeg`} onClick={this.handleClick} name="image" className='img-fluid w-50 mx-auto d-block'/>}
+                </div>
+                <div className="col" id="output-col">
+                <h2 className="text-center" onClick={this.handleClick}>{this.state.image.toUpperCase()}</h2>
+                {this.state.image == "" ? <span></span> : <div className="text-center" id="date" onClick={this.handleClick}>{`${this.state.month}-${this.state.day}-${this.state.year}`}</div>}
+                <div id="output" name="output" className="text-center" onClick={this.handleClick}>{this.state.output}
+                </div>
+                </div>
+                </div>
                 <div id="mercury" name="mercury" onClick={this.handleClick}>{this.state.mercury == "" ? <span></span> 
                 : this.state.mercury == "true" ? 
                 <div>
-                <h3>Is Mercury in Retrograde Today?</h3>
-                <p>Yes, mercury is in retrograde today! Don’t make any important moves when Mercury is retrograde. Nothing will be settled successfully for the future during these periods anyway – you will find it nearly impossible to nail down a plan. During a retrograde period, it is hard to get decisions from others. Even if a decision is made, it will be subject to change, either just after Mercury turns to direct motion or much later.</p>
+                <h3 className="text-center">Is Mercury in Retrograde Today?</h3>
+                <p className="text-center">Yes, mercury is in retrograde today! Don’t make any important moves when Mercury is retrograde. Nothing will be settled successfully for the future during these periods anyway – you will find it nearly impossible to nail down a plan. During a retrograde period, it is hard to get decisions from others. Even if a decision is made, it will be subject to change, either just after Mercury turns to direct motion or much later.</p>
                 </div>
                 : <div>
-                <h3>Is Mercury in Retrograde Today?</h3>
-                <p>No, mercury is not in retrograde today! Resume life as normal.</p>
+                <h3 className="text-center">Is Mercury in Retrograde Today?</h3>
+                <p className="text-center">No, mercury is not in retrograde today! Resume life as normal.</p>
                 </div>
                 }
                 </div>
