@@ -1,9 +1,15 @@
-# React Starter w/ Express Server, using Webpack
+# Daily Horoscope Web Application
 
-This is a project template that can be used to quickly start a react project. It has minimal dependencies and has a server route that you can use to proxy requests without exposing your api keys.
+Web application with React using 3rd party APIs to generate a daily horoscope based on selected zodiac sign from drop-down menu.
+
+No API keys are necessary to run the project. 
 
 ## Getting Started
 
+Clone the project:
+```
+$ git clone https://github.com/hfhealy/hackathon-starter
+```
 Install dependencies:
 ```
 $ npm install
@@ -19,13 +25,4 @@ Start the server
 $ npm run start
 ```
 
-## Use case
-
-When you create a request to a third party API from the server side (to protect your API key/credentials) you should create a `.env` file with your key.
-
-This will ensure that your private credentials do not get committed to git and will not be exposed to others on Github.
-
-You will also need to modify the `server/server.js` file to make your call to your api url and return back your data to your front end.
-
-An example of a request to a mock server is shown in the file. You will replace this with the API you want data from.
 
