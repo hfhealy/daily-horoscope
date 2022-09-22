@@ -23,7 +23,6 @@ class App extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        //this.request = this.request.bind(this)
     }
 
 
@@ -38,15 +37,23 @@ class App extends Component {
 
     handleClick(event) {
         var that = this;
-        axios
+        
+            const URL = `https://aztro.sameerkumar.website/?sign=${this.state.sign}&day=today`;
+            fetch(URL, {
+                method: 'POST'
+            }).then(response => response.json())
+            .then(json => { this.setState({json}); });
+        
+        // axios
             
-            .get(`/api/${this.state.sign}`) 
+            // .get(`/api/${this.state.sign}`) 
+            // .get(`https://aztro.sameerkumar.website/?sign=${this.state.sign}&day=today`) 
         
 
-            .then(response => response.data)
+            // .then(response => response.data)
 
             
-            .then(json => that.setState({output: json}));
+            // .then(json => that.setState({output: json}));
 
         // JSON.parse(JSON.stringify(this.state.json));
         // this.setState({output: this.state.json.horoscope})
@@ -73,12 +80,28 @@ class App extends Component {
             
     }
 
+   
+
+    // render() {
+    //     return (
+    //       <div>
+    //           Current Date: {this.state.json.current_date} <br />
+    //           Compatibility: {this.state.json.compatibility} <br />
+    //           Lucky Number: {this.state.json.lucky_number} <br />
+    //           Lucky Time: {this.state.json.lucky_time} <br />
+    //           Color: {this.state.json.color} <br />
+    //           Date Range: {this.state.json.date_range} <br />
+    //           Mood: {this.state.json.mood} <br />
+    //           Description: {this.state.json.description} <br />
+    //       </div>
+    //     );
+    // }
+
 
     render() {
         return (
         
-
-        <div>
+            <div>
         <img src="https://horoscope-react.s3.us-west-1.amazonaws.com/Daily+(1).png" id="headerimg" className="img-fluid w-75"/>
         <div className="row mx-auto d-block w-75">
         <div className= "col">
@@ -112,7 +135,7 @@ class App extends Component {
                 <div className="col" id="output-col">
                 <h2 className="text-center" onClick={this.handleClick}>{this.state.image.toUpperCase()}</h2>
                 {this.state.image == "" ? <span></span> : <div className="text-center" id="date" onClick={this.handleClick}>{`${this.state.month}-${this.state.day}-${this.state.year}`}</div>}
-                <div id="output" name="output" className="text-center" onClick={this.handleClick}>{this.state.output}
+                <div id="output" name="output" className="text-center" onClick={this.handleClick}>{this.state.json.description}
                 </div>
                 </div>
                 </div>
