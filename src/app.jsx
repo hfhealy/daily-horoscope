@@ -1,4 +1,4 @@
-//horoscope app using a horoscope API and mercury retrograde API
+//horoscope web application using a horoscope API and mercury retrograde API
 //display dropdown menu to choose your astrological sign
 //daily horoscope populates according to your sign
 //meme image populates for each sign after clicking button 
