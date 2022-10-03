@@ -8,7 +8,7 @@ No API keys are necessary to run the project.
 
 Clone the project:
 ```
-$ git clone https://github.com/hfhealy/hackathon-starter
+$ git clone https://github.com/hfhealy/daily-horoscope
 ```
 Install dependencies:
 ```
