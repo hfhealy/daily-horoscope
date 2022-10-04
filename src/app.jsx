@@ -1,16 +1,10 @@
-//horoscope web application using a horoscope API and mercury retrograde API
-//display dropdown menu to choose your astrological sign
-//daily horoscope populates according to your sign
-//meme image populates for each sign after clicking button 
-//mercury retrograde for current date populates
-
 import React, { Component } from 'react';
 import axios from 'axios';
 
 class App extends Component {
     constructor(props){
         super(props);
-        //sets default state
+        
         this.state = {
             json: [],
             mercury: '',
@@ -22,7 +16,7 @@ class App extends Component {
             month: '',
             day: ''
         }
-        //binds functions
+        
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }

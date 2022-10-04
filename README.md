@@ -1,8 +1,12 @@
 # Daily Horoscope Web Application
 
+![Daily Horoscope](https://horoscope-react.s3.us-west-1.amazonaws.com/horoscope.png)
+
 Web application with React using 3rd party APIs to generate a daily horoscope based on selected zodiac sign from drop-down menu.
 
 No API keys are necessary to run the project. 
+
+Demo: https://horoscope-hfh.herokuapp.com/ 
 
 ## Getting Started
 
